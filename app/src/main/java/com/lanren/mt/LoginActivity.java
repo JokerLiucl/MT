@@ -28,12 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         mPassWord = findViewById(R.id.lanren_et_password);
         mLogin = findViewById(R.id.lanren_et_login);
 
-        //测试提交文本
-
-
-
-
-
 //        --------------------  设置点击事件  -----------------------
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
