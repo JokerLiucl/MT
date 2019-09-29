@@ -20,6 +20,10 @@
 
         android:textColor="#000000"
         android:textSize="20sp"
+
+        android:background="@drawable/edittext_background_shape"
+
+        android:inputType="text|textCapWords"
         >
     </EditText>
     <EditText
@@ -34,6 +38,11 @@
 
         android:textColor="#000000"
         android:textSize="20sp"
+
+        android:background="@drawable/edittext_background_shape"
+        android:drawableLeft="@mipmap/mt_search"
+
+        android:inputType="number"
         >
     </EditText>
 
