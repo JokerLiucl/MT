@@ -2,6 +2,7 @@ package com.lanren.mt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -10,8 +11,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
+
+import com.lanren.mt.utils.QuickSharedPreferences;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,13 +31,19 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPassWord;
     private Button mLogin;
     private EditText mEmail;
-    
+    private RadioGroup mSex;
+    private String upLoadSex;
+    private Switch mIsStudent;
+    private Context mContext;
+    private RadioButton mMan;
+    private RadioButton mWoman;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mContext = this;
         initView();
     }
 
@@ -43,7 +56,42 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.lanren_et_email);
         setEditTextInhibitInputSpaChat(mEmail);
 
+        mSex = findViewById(R.id.lanren_rg_sex);
+        mMan = findViewById(R.id.lanren_rb_man);
+        mWoman = findViewById(R.id.lanren_rb_woman);
+        if (QuickSharedPreferences.getSex(mContext).equals("男")){
+            mMan.setChecked(true);
+        }else {
+            mWoman.setChecked(true);
+        }
 
+        mSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.lanren_rb_man:
+                        upLoadSex = "男";
+                        QuickSharedPreferences.setSex(mContext,upLoadSex);
+                        break;
+                    case R.id.lanren_rb_woman:
+                        upLoadSex = "女";
+                        QuickSharedPreferences.setSex(mContext, upLoadSex);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        mIsStudent = findViewById(R.id.lanren_sw_isstudent);
+        mIsStudent.setChecked(QuickSharedPreferences.getIsStudent(mContext));
+        mIsStudent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mIsStudent.setChecked(isChecked);
+                QuickSharedPreferences.setIsStudent(mContext,isChecked);
+            }
+        });
 
 //        --------------------  设置点击事件  -----------------------
         mLogin.setOnClickListener(new View.OnClickListener() {
@@ -67,12 +115,18 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 }
+
+                Log.i(TAG,"用户的性别是： " + QuickSharedPreferences.getSex(mContext) + "  用户是不是学生？ " + (QuickSharedPreferences.getIsStudent(mContext) ? "是" : "不是"));
             }
         });
 
     }
 
 
+    /**
+     * 输入框限制
+     * @param editText
+     */
     public  void setEditTextInhibitInputSpaChat(final EditText editText) {
         InputFilter filter_limit = new InputFilter() {
             @Override
