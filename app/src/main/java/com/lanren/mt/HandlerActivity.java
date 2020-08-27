@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lanren.mt.builder.SetMeal;
+
 public class HandlerActivity extends AppCompatActivity {
 
     private Handler mHandler;
@@ -55,6 +57,17 @@ public class HandlerActivity extends AppCompatActivity {
         mTime = findViewById(R.id.time);
         mStart = findViewById(R.id.start);
         mReset = findViewById(R.id.reset);
+        findViewById(R.id.taocan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetMeal setMeal = new SetMeal.Builder()
+                        .hanbao(2)
+                        .jichi(2)
+                        .kele(1)
+                        .build();
+                Log.i("liucl",setMeal.toString());
+            }
+        });
 
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -34,4 +34,14 @@
         android:layout_below="@+id/time"
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/start"/>
+
+    <Button
+        android:id="@+id/taocan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择套餐"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/time"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/reset"/>
 </RelativeLayout>
