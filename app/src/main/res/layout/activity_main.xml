@@ -14,5 +14,12 @@
         android:text="登录功能"
         >
     </Button>
+    <Button
+        android:id="@+id/checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="CheckBox"
+        >
+    </Button>
 
 </LinearLayout>

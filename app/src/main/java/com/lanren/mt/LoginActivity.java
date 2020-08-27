@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -18,14 +21,17 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.lanren.mt.utils.CheckInPutUtils;
 import com.lanren.mt.utils.QuickSharedPreferences;
+import com.lanren.mt.utils.TransInformation;
 
+import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = "LoginActivity";
+
 
     private EditText mUserName;
     private EditText mPassWord;
@@ -48,10 +54,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
 //        --------------------  找控件  -----------------------
         mUserName = findViewById(R.id.lanren_et_username);
         mPassWord = findViewById(R.id.lanren_et_password);
         mLogin = findViewById(R.id.lanren_et_login);
+        idCardEt = findViewById(R.id.idcard_no);
 
         mEmail = findViewById(R.id.lanren_et_email);
         setEditTextInhibitInputSpaChat(mEmail);
@@ -95,8 +103,11 @@ public class LoginActivity extends AppCompatActivity {
 
 //        --------------------  设置点击事件  -----------------------
         mLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                Toast.makeText(mContext,"现在的userID是: " + age,Toast.LENGTH_SHORT).show();
+
                 //获取输入框中的内容
                 String username = mUserName.getText().toString();
                 String password = mPassWord.getText().toString();
@@ -120,8 +131,48 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        idCardEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i(TAG,"现在有焦点");
+                }else {
+                    try {
+                        Editable text = idCardEt.getText();
+                        boolean b = CheckInPutUtils.checkIdCardNo(text.toString());
+                        if (b) {
+                            Log.i(TAG, "现在没有焦点,身份证号正确");
+                        }else {
+                            Log.e(TAG, "现在没有焦点,身份证号错误");
+                        }
+                    } catch (ParseException e) {
+                        Log.e(TAG,e.getMessage());
+                    }
+
+                }
+            }
+        });
+
+        idCardEt.setTransformationMethod(new TransInformation());
+        setInPutFilter2(idCardEt);
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    assert v != null;
+                    if (idCardEt != null) {
+                        idCardEt.clearFocus();
+                    }
+                }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        return getWindow().superDispatchTouchEvent(ev) || onTouchEvent(ev);
+    }
 
     /**
      * 输入框限制
@@ -148,5 +199,29 @@ public class LoginActivity extends AppCompatActivity {
             }
             };
         editText.setFilters(new InputFilter[]{filter_limit});
+    }
+
+
+    /**
+     * 禁止EditText输入特殊字符
+     * @param editText
+     */
+    public static void setInPutFilter2(EditText editText){
+
+        InputFilter filter=new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String speChat="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+                Pattern pattern = Pattern.compile(speChat);
+                Matcher matcher = pattern.matcher(source.toString());
+                if(matcher.find() || source.equals(" ")){
+                    return "";
+                }else{
+                    return null;
+                }
+
+            }
+        };
+        editText.setFilters(new InputFilter[]{filter});
     }
 }

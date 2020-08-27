@@ -62,6 +62,22 @@
         >
     </EditText>
 
+    <EditText
+        android:id="@+id/idcard_no"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="请输入身份证号码"
+
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/edittext_background_shape"
+        >
+    </EditText>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -133,16 +149,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
 
+        android:background="@drawable/button_selector"
         android:text="登录"
         android:textColor="#000000"
-        android:textSize="20sp"
 
-        android:background="@drawable/button_selector"
-        >
-    </Button>
+        android:textSize="20sp"></Button>
 
 </LinearLayout>
