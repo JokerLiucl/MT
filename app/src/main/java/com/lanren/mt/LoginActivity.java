@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private Context mContext;
     private RadioButton mMan;
     private RadioButton mWoman;
+    private EditText idCardEt;
 
 
     @Override
@@ -106,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"现在的userID是: " + age,Toast.LENGTH_SHORT).show();
 
                 //获取输入框中的内容
                 String username = mUserName.getText().toString();
