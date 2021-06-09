@@ -30,4 +30,12 @@
         >
     </Button>
 
+    <Button
+        android:id="@+id/handler2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Handler2"
+        >
+    </Button>
+
 </LinearLayout>
