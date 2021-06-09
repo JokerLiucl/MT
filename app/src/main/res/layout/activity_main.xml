@@ -38,4 +38,12 @@
         >
     </Button>
 
+    <Button
+        android:id="@+id/handler3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Handler3"
+        >
+    </Button>
+
 </LinearLayout>

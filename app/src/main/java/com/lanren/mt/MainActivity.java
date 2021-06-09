@@ -26,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.handler).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //hahahahaha
+            }
+        });
+
+        findViewById(R.id.handler3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //同文件不同改动
                 //我是的是新功能
             }
         });
