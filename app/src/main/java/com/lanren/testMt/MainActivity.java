@@ -1,13 +1,15 @@
-package com.lanren.mt;
+package com.lanren.testMt;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.lanren.mt.R;
+
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +32,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.handler3).setOnClickListener(new View.OnClickListener() {
+        Button testBtn = findViewById(R.id.handler2);
+        testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //同文件不同改动
-                //我是的是新功能
-            }
-        });
-
-        findViewById(R.id.handler2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //模拟新添加的代码
+                //装作我是改动
             }
         });
     }

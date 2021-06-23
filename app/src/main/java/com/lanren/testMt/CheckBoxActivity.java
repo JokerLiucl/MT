@@ -1,13 +1,13 @@
-package com.lanren.mt;
+package com.lanren.testMt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
+
+import com.lanren.mt.R;
 
 import java.util.ArrayList;
 

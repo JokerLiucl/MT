@@ -1,4 +1,4 @@
-package com.lanren.mt.builder;
+package com.lanren.testMt.builder;
 
 /**
  * 套餐

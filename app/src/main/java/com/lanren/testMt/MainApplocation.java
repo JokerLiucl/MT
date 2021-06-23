@@ -1,11 +1,9 @@
-package com.lanren.mt;
+package com.lanren.testMt;
 
 import android.app.Application;
 
-import com.lanren.mt.utils.TypefaceUtil;
+import com.lanren.testMt.utils.TypefaceUtil;
 import com.loan.loandatasdk.LoanDataSDK;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class MainApplocation extends Application {

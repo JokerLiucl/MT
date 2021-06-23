@@ -1,4 +1,4 @@
-package com.lanren.mt;
+package com.lanren.testMt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lanren.mt.builder.SetMeal;
+import com.lanren.mt.R;
+import com.lanren.testMt.builder.SetMeal;
 
 public class HandlerActivity extends AppCompatActivity {
 

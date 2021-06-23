@@ -1,4 +1,4 @@
-package com.lanren.mt.utils;
+package com.lanren.testMt.utils;
 
 import android.app.Activity;
 import android.content.Context;

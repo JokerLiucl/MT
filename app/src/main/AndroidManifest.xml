@@ -13,10 +13,10 @@
         <meta-data android:name="LOANDATASDK_ID" android:value="LoanData_562068102903975936"/>
         <meta-data android:name="LOANDATASDK_KEY" android:value="LoanData_a2b6c39356987a3f8cd3cf39c46068d4"/>
 
-        <activity android:name=".HandlerActivity" />
-        <activity android:name=".CheckBoxActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.lanren.testMt.HandlerActivity" />
+        <activity android:name="com.lanren.testMt.CheckBoxActivity" />
+        <activity android:name="com.lanren.testMt.LoginActivity" />
+        <activity android:name="com.lanren.testMt.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

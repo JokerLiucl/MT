@@ -1,4 +1,4 @@
-package com.lanren.mt.utils;
+package com.lanren.testMt.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

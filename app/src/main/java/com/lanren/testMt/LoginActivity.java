@@ -1,4 +1,4 @@
-package com.lanren.mt;
+package com.lanren.testMt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
-import android.text.InputType;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,9 +20,10 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.lanren.mt.utils.CheckInPutUtils;
-import com.lanren.mt.utils.QuickSharedPreferences;
-import com.lanren.mt.utils.TransInformation;
+import com.lanren.mt.R;
+import com.lanren.testMt.utils.CheckInPutUtils;
+import com.lanren.testMt.utils.QuickSharedPreferences;
+import com.lanren.testMt.utils.TransInformation;
 
 import java.text.ParseException;
 import java.util.regex.Matcher;
